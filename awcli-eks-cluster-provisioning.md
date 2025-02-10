@@ -196,7 +196,7 @@ aws eks wait cluster-active --region us-east-1 --name "eks-cluster"
 ### Create Node Group
 
 ```sh
-aws eks create-nodegroup --region us-east-1 --cluster-name eks-cluster --nodegroup-name eks-node-group --node-role "arn:aws:iam::008152407463:role/LabRole" --subnets $PRIVATE_SUBNET_ID --scaling-config minSize=2,maxSize=2,desiredSize=2 --instance-types t3.medium --ami-type AL2_x86_64 --remote-access "ec2SshKey=eks-nodes-key-pair,sourceSecurityGroups=$SECURITY_GROUP_ID"
+aws eks create-nodegroup --region us-east-1 --cluster-name eks-cluster --nodegroup-name eks-node-group --node-role $LABROLE_ARN --subnets $PRIVATE_SUBNET_ID --scaling-config minSize=2,maxSize=2,desiredSize=2 --instance-types t3.small --ami-type AL2_x86_64 --remote-access "ec2SshKey=eks-nodes-key-pair,sourceSecurityGroups=$SECURITY_GROUP_ID"
 ```
 
 ### Wait for Node Group creation completition
