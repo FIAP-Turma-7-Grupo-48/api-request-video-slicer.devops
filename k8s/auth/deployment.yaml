@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiap-video-request-auth-deployment
+  labels:
+    app: fiap-video-request-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fiap-video-request-auth
+  template: 
+    metadata:
+      labels:
+        app: fiap-video-request-auth
+    spec:
+      containers:
+      - name: fiap-video-request-auth
+        imagePullPolicy: Always
+        image: "ghcr.io/fiap-turma-7-grupo-48/video-slicer-auth-api:latest"
+        ports:
+        - containerPort: 80
+        envFrom:          
+          - secretRef:
+              name: fiap-video-request-auth
+      dnsPolicy: ClusterFirst      

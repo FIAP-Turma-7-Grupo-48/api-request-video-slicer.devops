@@ -3,6 +3,7 @@ kind: Service
 metadata:
   labels:
     app: mongo
+    namespace: mongo
   name: mongo-svc
 spec:
   ports:

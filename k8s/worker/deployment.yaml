@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiap-video-request-worker-deplyoment
+  labels:
+    app: fiap-video-request-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fiap-video-request-worker
+  template: 
+    metadata:
+      labels:
+        app: fiap-video-request-worker
+    spec:
+      containers:
+      - name: fiap-video-request-worker 
+        image: "ghcr.io/fiap-turma-7-grupo-48/worker-video-slicer:latest"
+        ports:
+        - containerPort: 80
+        envFrom:          
+          - secretRef:
+              name: fiap-video-request-worker
+      dnsPolicy: ClusterFirst      

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fiap-video-request-auth-service
+  namespace: default
+  labels:
+    app: fiap-video-request-auth
+spec:
+  selector:
+    app: fiap-video-request-auth
+  ports:    
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: ClusterIP

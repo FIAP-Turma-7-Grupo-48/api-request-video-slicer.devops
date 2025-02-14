@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fiap-video-request-api-service
+  namespace: default
+  labels:
+    app: fiap-video-request-api
+spec:
+  selector:
+    app: fiap-video-request-api
+  ports:    
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: ClusterIP
